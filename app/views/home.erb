@@ -8,9 +8,15 @@
 <img src="<%= bulbasaur[:sprite] %>" alt="" >
 <img src="<%= charmander[:sprite] %>" alt="" >
 <img src="<%= squirtle[:sprite] %>" alt="" > <br>
-<img src="https://static.giantbomb.com/uploads/scale_super/0/1481/2897229-9939923796-latest" alt="image" height="150" width = "500"
-class="center">
-<img class="center" src="http://gran4u.xtgem.com/Pokedex.png" alt="image" > 
+<img src="https://static.giantbomb.com/uploads/scale_super/0/1481/2897229-9939923796-latest" alt="image" height="150" width = "400"
+class="center"><br>
+<img class="center" src="http://gran4u.xtgem.com/Pokedex.png" alt="image" height="300" width = "500" class="center" > 
+<br>
 <form action="/logout" method="POST">
-  <input type="submit" value="logout">
+<input type="submit" value=" Logout ">
+</form>
+<br><br>
+<label for="delete">Click below to end your Pokemon Journey</label>
+<form action="/delete/<%= @trainer.id %>" method="POST"><br>
+<input type="submit" name="method" value=" Delete Trainer ">
 </form>
