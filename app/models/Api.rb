@@ -1,7 +1,7 @@
 class Api
 
   def pokemon_creator
-    url = "https://pokeapi.co/api/v2/pokemon?limit=1"
+    url = "https://pokeapi.co/api/v2/pokemon?limit=10"
     uri = URI.parse(url)
     response = Net::HTTP.get_response(uri)
     response.body

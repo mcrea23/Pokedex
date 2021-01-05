@@ -14,3 +14,7 @@ require 'open-uri'
 require 'json'
 require_relative "../app/models/Api.rb"
 require_all 'app'
+
+configure :development do
+  set :database, 'sqlite3:db/development.sqlite'
+end

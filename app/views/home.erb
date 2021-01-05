@@ -1,16 +1,19 @@
+<div align="center">
 <h1> Welcome back <%= @trainer.username.upcase %></h1>
 <div>
-<h2> Choose a Pokemon below </h2>
-</div>
-<%bulbasaur = Pokemon.find_by(id: "1")%>
-<%charmander = Pokemon.find_by(id: "4")%>
-<%squirtle = Pokemon.find_by(id: "7")%>
-<img src="<%= bulbasaur[:sprite] %>" alt="" >
-<img src="<%= charmander[:sprite] %>" alt="" >
-<img src="<%= squirtle[:sprite] %>" alt="" > <br>
 <img src="https://static.giantbomb.com/uploads/scale_super/0/1481/2897229-9939923796-latest" alt="image" height="150" width = "400"
 class="center"><br>
-<img class="center" src="http://gran4u.xtgem.com/Pokedex.png" alt="image" height="300" width = "500" class="center" > 
+<div>
+<h2>Pokemon in Pokedex</h2>
+<h3>  
+  <ul>
+    <% Pokemon.all.each.with_index(1) do |pokemon, index|%>
+      <%=  "#{index}. #{pokemon["name"].capitalize}"  %>
+      <img src="<%= pokemon[:sprite] %>" alt="" sizes="100"> <br>
+    <%end%>
+  </ul>
+</h3>
+
 <br>
 <form action="/logout" method="POST">
 <input type="submit" value=" Logout ">

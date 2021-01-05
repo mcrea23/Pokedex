@@ -16,9 +16,12 @@ class ApplicationController < Sinatra::Base
     erb :signup
   end
 
-  get '/' do
-    Api.new.pokemon_creator
-    erb :welcome
+  get "/" do
+    if Pokemon.all.size == 0
+      Api.new.pokemon_creator 
+    else
+      erb :welcome 
+    end
   end
 
   post '/signup' do
@@ -27,9 +30,9 @@ class ApplicationController < Sinatra::Base
     redirect '/home'
   end
 
-  post 'login' do 
+  post '/login' do 
     user = Trainer.find_by(:username => params[:username])
-    if user && user.authenticate(params[:username])
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect '/home'
     else
