@@ -9,4 +9,8 @@ ActiveRecord::Base.establish_connection(
 )
 
 require './app/controllers/application_controller'
+require 'net/http'
+require 'open-uri'
+require 'json'
+require_relative "../app/models/Api.rb"
 require_all 'app'

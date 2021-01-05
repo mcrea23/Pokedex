@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20210104224159) do
     t.string   "pokemon_type"
     t.string   "region"
     t.string   "sprite"
+    t.string   "height"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
