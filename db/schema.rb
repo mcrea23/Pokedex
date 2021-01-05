@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(version: 20210104224159) do
 
   create_table "pokemons", force: :cascade do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "pokemon_type"
     t.string   "region"
-    t.string   "height"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "sprite"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "trainers", force: :cascade do |t|

@@ -15,7 +15,7 @@ class Api
       responses = Net::HTTP.get_response(poke_uri)
       responses.body
       pokemon_data = JSON.parse(responses.body)
-      Pokemon.create(name: pokemon_data["name"]) 
+      Pokemon.create(name: pokemon_data["name"], pokemon_type: pokemon_data["types"][0]["type"]["name"], height: pokemon_data["height"], sprite: pokemon_data["sprites"]["front_default"]) 
     end
   end
 end
