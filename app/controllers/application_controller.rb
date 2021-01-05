@@ -9,7 +9,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/login' do
-    redirect '/'
+    erb :login
+  end
+
+  get '/home' do
+    erb :home
   end
 
   get '/signup' do 
@@ -20,21 +24,21 @@ class ApplicationController < Sinatra::Base
     if Pokemon.all.size == 0
       Api.new.pokemon_creator 
     else
-      erb :welcome 
+      erb :index 
     end
   end
 
   post '/signup' do
     @trainer = Trainer.create(username: params["username"], password: params["password"])
     session[:user_id] = @trainer.id
-    redirect '/home'
+    redirect '/index'
   end
 
   post '/login' do 
     user = Trainer.find_by(:username => params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect '/home'
+      redirect '/index'
     else
       redirect '/'
     end
@@ -45,10 +49,10 @@ class ApplicationController < Sinatra::Base
     redirect '/'
   end
 
-  get '/home' do
+  get '/index' do
     @trainer = Trainer.find_by_id(session[:user_id])
     if logged_in?
-    erb :home
+    erb :index
     else
       redirect '/'
     end
