@@ -8,11 +8,14 @@ ActiveRecord::Base.establish_connection(
   :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
 )
 
-require './app/controllers/application_controller'
+
 require 'net/http'
 require 'open-uri'
 require 'json'
 require_relative "../app/models/Api.rb"
+require './app/controllers/application_controller'
+require './app/controllers/pokemon_controller'
+require './app/controllers/users_controller'
 require_all 'app'
 
 configure :development do

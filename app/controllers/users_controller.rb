@@ -1,7 +1,7 @@
 
 class UsersController < ApplicationController
   get '/signup' do 
-    erb :signup
+    erb :'users/signup'
   end
 
   post '/signup' do
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    erb :login
+    erb :'users/login'
   end
 
   post '/logout' do
@@ -28,3 +28,49 @@ class UsersController < ApplicationController
       redirect '/failure'
     end
   end
+
+  post '/login' do 
+    user = Trainer.find_by(:username => params[:username])
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect '/welcome'
+    else
+      redirect '/failure'
+    end
+  end
+
+  get "/failure" do
+    erb :failure
+  end
+
+  get '/list' do
+    erb :'pokemon/list'
+  end
+
+  get '/welcome' do
+    @trainer = current_user
+    erb :'users/welcome'
+  end
+
+  get "/" do
+    if Pokemon.all.size == 0
+      Api.new.pokemon_creator 
+    else
+      erb :index 
+    end
+  end
+
+  get '/index' do
+    @trainer = Trainer.find_by_id(session[:user_id])
+    if logged_in?
+    erb :index
+    else
+      redirect '/'
+    end
+  end
+
+  post '/delete/:user_id' do
+    Trainer.destroy(params[:user_id])
+    redirect '/'
+  end
+end
