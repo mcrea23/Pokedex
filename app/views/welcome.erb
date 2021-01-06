@@ -1,6 +1,6 @@
 <div class="topnav">
-  <a class="/welcome" href="#home">Home</a><br>
-  <a href="/index" class="btn btn-link">Pokemon Index</a><br>
+  <a href="/index" class="btn btn-link">Home</a><br>
+  <a href="/list" class="btn btn-link">Pokemon Index</a><br>
   <a href="/signup" class="btn btn-link">Sign Up</a><br>
   <a href="/login" class="btn btn-link">Log In</a>
 
@@ -8,21 +8,18 @@
 
 <div align="center">
 <img src="https://toucantoco.com/blog/wp-content/uploads/2016/07/Capture-d%E2%80%99e%CC%81cran-2016-07-19-a%CC%80-15.27.31.png" width="200" length="130"/>
-<br> 
-<h1 style="font-family:Optima;">Welcome Trainer</h1>
-<hr>
-<br>
-<div class="formContainer">
-<label for="username">Username</label>
-<form action="/login" method="POST">
-<input type="text" name="username" id="username"> <br>
 
-<label for="password">Password</label><br>
-<input type="password" name="password" id="password"> <br>
+
+<h1> Welcome back <%= @trainer.username %></h1>
+
 <br>
-<input type="submit" style="font-face: 'Optima'; font-size: medium; color: teal; background-color: "green"; border: 3pt ridge lightgrey" value=" Let's Go! ">
-<br>
+<form action="/logout" method="POST">
+<input type="submit" value=" Logout ">
+</form>
+<br><br>
+<label for="delete">Click below to end your Pokemon Journey</label>
+<form action="/delete/<%= @trainer.id %>" method="POST"><br>
+<input type="submit" name="method" value=" Delete Trainer ">
 </form>
 
-</div>
-</form>
+<%# my trainer method will not work on this page   %>
