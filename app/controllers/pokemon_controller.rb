@@ -5,5 +5,17 @@ class PokemonController < ApplicationController
     else
       erb :index 
     end
-  end 
+
+#   get '/pokemon' do
+#     redirect to '/login' unless logged_in?
+#     @pokemon = Pokemon.all
+#     erb :'pokemon/index'
+#   end
+
+#   get '/pokemon/new' do
+#     redirect to '/login' unless logged_in?
+#     erb :'pokemon/new'
+#   end
+# end
+end
 end
