@@ -13,22 +13,12 @@ class="center"><br>
 <h2>A list of Pokemon encountered in the wild</h2>
 <h3>  
   <ul>
-  <form>
-  <fieldset>
     <% Pokemon.all.each.with_index(1) do |pokemon, index|%>
       <%=  "#{index}. #{pokemon["name"].capitalize}"  %>
       <img src="<%= pokemon[:sprite] %>" alt="" align="center"> <br>
-       <input type="checkbox" id="trainer" name="pokemon" value=" ">
-  <label for="pokemon"> Pick Me!</label><br>
-        <input type="text" id="otherValue" name="other">
-    </div>
-    <div>
-      <button type="submit">Submit form</button>
-    </div>
-  </fieldset>
-</form>
     <%end%>
   </ul>
 </h3>
+
       
 <button type="button" onclick="alert('Hello world!')">Click Me!</button>
