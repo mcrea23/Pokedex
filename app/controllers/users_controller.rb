@@ -52,14 +52,6 @@ class UsersController < ApplicationController
     erb :'users/welcome'
   end
 
-  get "/" do
-    if Pokemon.all.size == 0
-      Api.new.pokemon_creator 
-    else
-      erb :index 
-    end
-  end
-
   get '/index' do
     @trainer = Trainer.find_by_id(session[:user_id])
     if logged_in?
