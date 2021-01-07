@@ -1,5 +1,5 @@
 
-class UsersController < ApplicationController
+class TrainerController < ApplicationController
   get '/signup' do 
     erb :'users/signup'
   end
@@ -19,13 +19,13 @@ class UsersController < ApplicationController
     redirect '/'
   end
 
-  post '/login' do 
+  post "/login" do
     user = Trainer.find_by(:username => params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect '/welcome'
+      redirect "/home"
     else
-      redirect '/failure'
+      redirect "/"
     end
   end
 
