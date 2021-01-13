@@ -19,3 +19,5 @@ class ApplicationController < Sinatra::Base
     current_user != nil
   end
 end
+
+

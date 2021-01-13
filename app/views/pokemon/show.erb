@@ -1,2 +1,7 @@
- <h1> <img src="<%=@pokemon.sprite%>" alt=""align="center" ></h1>
+<h1><%= @pokemon.name.capitalize %></h1>
+<img src="<%= @pokemon[:sprite] %>" alt="" align="center" > <br>
+<%="Height: #{@pokemon.height}"%> <br>
+<%="Type: #{@pokemon.pokemon_type.capitalize}"%>
 
+
+#must add link to this page for link test test 
