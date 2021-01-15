@@ -15,11 +15,11 @@ class PokemonController < ApplicationController
     @pokemon = Pokemon.find_by_id(params[:id])
     erb :'pokemon/show'
   end
-  
+
   get '/pokemon' do
     @trainer = current_user
     if logged_in?
-      erb :'trainers/show'
+      erb :'users/welcome'
     else
       redirect "/"
     end

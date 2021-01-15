@@ -14,10 +14,11 @@
 <div>
 <br>
 <img src="https://www.nicepng.com/png/full/156-1564887_ball-clipart-pokemon-pokemonball.png" width="50" length="50"/>
-<h2> Your Pokedex <h2>
+<h2> Your Pokedex <h2> <br>
 <%PokemonTrainer.all.each do |pokemon_trainer|%>
   <%if pokemon_trainer.trainer_id == current_user.id%>
     <form action="/pokemon_trainer/<%= pokemon_trainer.id%>" method="POST">
+     <input type="hidden" name="_method" value="delete">
       <%pokemon = Pokemon.find_by_id(pokemon_trainer.pokemon_id) %>
       <h2><%=  pokemon_trainer.nickname.capitalize %></h2>
       <img src="<%= pokemon[:sprite] %>" alt="" align="center" > <br>
