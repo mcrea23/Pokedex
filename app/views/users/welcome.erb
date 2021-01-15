@@ -36,14 +36,12 @@
   <%else%>
   <%end%>
 <%end%>
-<br>
-<form action="/logout" method="POST">
-<input type="submit" value=" Logout ">
-</form>
+
 <br><br>
 <h3>Click below to end your Pokemon Journey</h3>
 <form action="/delete/<%= @trainer.id %>" method="POST"><br>
 <input type="submit" name="method" value=" Delete Trainer ">
 </form>
 </div>
+
 

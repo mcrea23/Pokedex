@@ -29,17 +29,26 @@ class TrainerController < ApplicationController
   end
 
   get "/failure" do
-    erb :failure
+    erb :error
   end
 
   get '/pokemons' do
+    @trainer = Trainer.find_by_id(session[:user_id])
+    if logged_in?
     erb :'pokemon/pokemons'
+    else
+      redirect '/failure'
+    end
   end
 
   get '/welcome' do
     @trainer = current_user
-    erb :'users/welcome'
+    if logged_in? 
+      erb :'users/welcome'
+    else
+    redirect '/failure'
   end
+end
 
   get '/index' do
     @trainer = Trainer.find_by_id(session[:user_id])
