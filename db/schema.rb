@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20210106221858) do
   create_table "pokemon_trainers", force: :cascade do |t|
     t.integer  "pokemon_id"
     t.integer  "trainer_id"
+    t.string   "nickname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

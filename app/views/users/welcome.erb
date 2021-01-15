@@ -1,8 +1,8 @@
 <div class="topnav">
   <a href="/index" class="btn btn-link">Home</a><br>
-  <a href="/list" class="btn btn-link">Pokemon Index</a><br>
+  <a href="/pokemons" class="btn btn-link">Pokemon Index</a><br>
   <a href="/signup" class="btn btn-link">Sign Up</a><br>
-  <a href="/login" class="btn btn-link">Log In</a>
+  <a href="/logout" class="btn btn-link">Log Out</a>
 
 </div>
 
@@ -15,6 +15,26 @@
 <br>
 <img src="https://www.nicepng.com/png/full/156-1564887_ball-clipart-pokemon-pokemonball.png" width="50" length="50"/>
 <h2> Your Pokedex <h2>
+<%PokemonTrainer.all.each do |pokemon_trainer|%>
+  <%if pokemon_trainer.trainer_id == current_user.id%>
+    <form action="/pokemon_trainer/<%= pokemon_trainer.id%>" method="POST">
+      <%pokemon = Pokemon.find_by_id(pokemon_trainer.pokemon_id) %>
+      <h2><%=  pokemon_trainer.nickname.capitalize %></h2>
+      <img src="<%= pokemon[:sprite] %>" alt="" align="center" > <br>
+      <%="Height: #{pokemon.height}"%> <br>
+      <%="Type: #{pokemon.pokemon_type.capitalize}"%> <br> <br>
+      <input type="hidden" value="<%=pokemon.id%>" name="pokemon">
+      <input type="submit" value=" Release me " style="background-color:red"> <br>
+    </form>
+    <form action="/pokemon_trainer/<%= pokemon_trainer.id%>/edit" method="POST">
+        <input type="hidden" name="_method" value="patch">
+        <input type="hidden" value="<%=pokemon.id%>" name="pokemon">
+        <input type="text" placeholder="Nickname" name="name" id="name" required> 
+        <input type="submit" value=" Rename ">
+    </form>
+  <%else%>
+  <%end%>
+<%end%>
 <br>
 <form action="/logout" method="POST">
 <input type="submit" value=" Logout ">

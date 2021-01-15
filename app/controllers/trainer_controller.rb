@@ -1,4 +1,3 @@
-
 class TrainerController < ApplicationController
   get '/signup' do 
     erb :'users/signup'
@@ -14,19 +13,19 @@ class TrainerController < ApplicationController
     erb :'users/login'
   end
 
-  post '/logout' do
-    session.clear
-    redirect '/'
-  end
-
   post "/login" do
     user = Trainer.find_by(:username => params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect "/home"
+      redirect "/welcome"
     else
       redirect "/"
     end
+  end
+  
+  post '/logout' do
+    session.clear
+    redirect '/'
   end
 
   post '/login' do 
@@ -43,8 +42,8 @@ class TrainerController < ApplicationController
     erb :failure
   end
 
-  get '/list' do
-    erb :'pokemon/list'
+  get '/pokemons' do
+    erb :'pokemon/pokemons'
   end
 
   get '/welcome' do
