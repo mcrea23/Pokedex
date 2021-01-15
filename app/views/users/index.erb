@@ -1,0 +1,11 @@
+<h1> Welcome Home <%= @trainer.username %>!</h1>
+<h3>Please enter your name, age, and hometown</h3>
+<form action="/trainer" method="post">
+  <label for="name">Name</label>
+  <input type="text" name="name" required>
+  <label for="age">Age</label>
+  <input type="number" step="1" pattern="\d+" name="age" required>
+  <label for="hometown">Hometown</label>
+  <input type="text" name="hometown" required>
+  <input type="submit" value="Submit">
+</form>

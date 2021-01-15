@@ -1,0 +1,16 @@
+<h1> Welcome Back <%= @trainer.username %>!</h1>
+<h3>Current Trainer Info</h3>
+<%= "Name: #{@trainer.name} " %> <br>
+<%= "Age: #{@trainer.age}" %> <br>
+<%= "Hometown: #{@trainer.hometown}" %> <br>
+<h3>Please enter your new name, age, and hometown</h3>
+<form action="/trainer/edit" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="name">Name</label>
+  <input type="text" name="name" required>
+  <label for="age">Age</label>
+  <input type="number" step="1" pattern="\d+" name="age" required>
+  <label for="hometown">Hometown</label>
+  <input type="text" name="hometown" required>
+  <input type="submit" value="Submit">
+</form>

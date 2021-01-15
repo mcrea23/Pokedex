@@ -11,16 +11,15 @@
 
 
 <h1> Welcome back <%= @trainer.username.upcase %></h1>
-<div>
 <br>
 <img src="https://www.nicepng.com/png/full/156-1564887_ball-clipart-pokemon-pokemonball.png" width="50" length="50"/>
-<h2> Your Pokedex <h2> <br>
+<h2> Your Pokedex <h2> <br><div>
 <%PokemonTrainer.all.each do |pokemon_trainer|%>
   <%if pokemon_trainer.trainer_id == current_user.id%>
     <form action="/pokemon_trainer/<%= pokemon_trainer.id%>" method="POST">
      <input type="hidden" name="_method" value="delete">
       <%pokemon = Pokemon.find_by_id(pokemon_trainer.pokemon_id) %>
-      <h2><%=  pokemon_trainer.nickname.capitalize %></h2>
+      <%=  pokemon_trainer.nickname.capitalize %><br><br>
       <img src="<%= pokemon[:sprite] %>" alt="" align="center" > <br>
       <%="Height: #{pokemon.height}"%> <br>
       <%="Type: #{pokemon.pokemon_type.capitalize}"%> <br> <br>
@@ -32,6 +31,7 @@
         <input type="hidden" value="<%=pokemon.id%>" name="pokemon">
         <input type="text" placeholder="Nickname" name="name" id="name" required> 
         <input type="submit" value=" Rename ">
+        <br><br>
     </form>
   <%else%>
   <%end%>
