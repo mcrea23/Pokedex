@@ -9,7 +9,7 @@
 
 <img src="https://www.nicepng.com/png/detail/876-8767084_yo-va-mizuki-sun-and-moon-player-character.png" width="220" length="150"/>
 
-<h1> Welcome Home <%= @trainer.username %>!</h1>
+<h1> Welcome Home <%= @trainer.username.upcase %>!</h1>
 <h3>Please enter your name, age, and hometown</h3>
 <form action="/trainer" method="post">
   <label for="name">Name</label>
@@ -17,6 +17,8 @@
   <label for="age">Age</label>
   <input type="number" step="1" pattern="\d+" name="age" required>
   <label for="hometown">Hometown</label>
-  <input type="text" name="hometown" required>
-  <input type="submit" value="Submit">
+  <input type="text" name="hometown" required><br><br>
+  <input type="submit" value=" Submit ">
 </form>
+
+

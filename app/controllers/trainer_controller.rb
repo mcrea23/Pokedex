@@ -64,16 +64,16 @@ end
     redirect '/'
   end
 
-  get "/trainer" do
+  get "/trainers" do
     @trainer = current_user
     if logged_in? && @trainer.name == nil
       erb :'users/index'
     else
-      redirect "/trainer/edit"
+      redirect "/trainers/:id/edit"
     end
   end
   
-  post '/trainer' do
+  post '/trainers' do
     @trainer = current_user
     @trainer.name = params[:name]
     @trainer.age = params[:age]
@@ -82,7 +82,7 @@ end
     redirect '/pokemons'
   end
 
-  get '/trainer/edit' do
+  get '/trainers/:id/edit' do
     @trainer = current_user
     if logged_in? && @trainer.name != nil
       erb :'users/edit'
@@ -91,7 +91,7 @@ end
     end
   end
 
-  patch '/trainer/edit' do
+  patch '/trainers/:id/edit' do
     @trainer = current_user
     @trainer.name = params[:name]
     @trainer.age = params[:age]
