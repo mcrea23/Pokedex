@@ -1,8 +1,22 @@
+<div class="topnav">
+  <a href="/index" class="btn btn-link">Home</a><br>
+  <a href="/pokemons" class="btn btn-link">Pokemon Index</a><br>
+  <a href="/trainer" class="btn btn-link">Trainer</a><br>
+  <a href="/logout" class="btn btn-link">Log Out</a>
+
+</div><div align="center">
+<div align="center">
+
+<img src="https://cosplayfu-website.s3.amazonaws.com/_Upload/b/50607-Female-Trainer-Cosplay-form-Pokemon-Go.jpg" width="220" length="150"/>
+
+<br><br>
 <h1> Welcome Back <%= @trainer.username %>!</h1>
 <h3>Current Trainer Info</h3>
 <%= "Name: #{@trainer.name} " %> <br>
 <%= "Age: #{@trainer.age}" %> <br>
 <%= "Hometown: #{@trainer.hometown}" %> <br>
+<br><br>
+<h3> Want to update? <h3>
 <h3>Please enter your new name, age, and hometown</h3>
 <form action="/trainer/edit" method="post">
   <input type="hidden" name="_method" value="patch">
